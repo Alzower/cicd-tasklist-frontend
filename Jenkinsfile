@@ -50,7 +50,13 @@ pipeline {
                 sh 'npm audit --audit-level=high'
             }
         }
-
+        stage('SonarQube Analysis') {
+            steps {
+                withSonarQubeEnv('SonarQube') {
+                    sh 'npx sonar-scanner'
+                }
+            }
+        }
         stage('Docker Build') {
             steps {
                 sh "docker build -t ${DOCKERHUB_CREDS_USR}/${IMAGE_NAME}:${IMAGE_TAG} -t ${DOCKERHUB_CREDS_USR}/${IMAGE_NAME}:latest ."
