@@ -6,7 +6,7 @@ pipeline {
     }
 
     environment {
-        IMAGE_NAME      = 'tasklist-front'
+        IMAGE_NAME      = 'tggu-tasklist-frontend'
         IMAGE_TAG       = "${BUILD_NUMBER}"
         DOCKERHUB_CREDS = credentials('dockerhub-credentials')
     }
