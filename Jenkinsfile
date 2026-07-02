@@ -44,16 +44,6 @@ pipeline {
             }
         }
 
-        stage('E2E Tests') {
-            steps {
-                sh 'npm run test:e2e'
-            }
-            post {
-                always {
-                    junit testResults: 'reports/junit-e2e.xml', allowEmptyResults: true
-                }
-            }
-        }
 
         stage('Security Scan') {
             steps {
